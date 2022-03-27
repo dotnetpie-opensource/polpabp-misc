@@ -1,0 +1,3 @@
+Projects:=src/Volo.Abp.BackgroundWorkers.Hangfire/Volo.Abp.BackgroundWorkers.Hangfire.csproj
+
+include Makefile.build

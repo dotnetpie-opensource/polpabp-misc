@@ -1,0 +1,3 @@
+Projects:=src/PolpAbp.AspNetCore.Mvc.UI.Theme.Basic/PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.csproj
+
+include Makefile.build
