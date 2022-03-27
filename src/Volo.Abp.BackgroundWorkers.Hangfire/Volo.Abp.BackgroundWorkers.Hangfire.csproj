@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+		<Version>3.3.2</Version>		
+        <AssemblyName>Volo.Abp.BackgroundWorkers.Hangfire</AssemblyName>
+        <PackageId>Volo.Abp.BackgroundWorkers.Hangfire</PackageId>
+        <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<IsPackable>true</IsPackable>
+		<OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+		<PackageReference Include="Volo.Abp.BackgroundWorkers" Version="3.3.2" />
+		<PackageReference Include="Volo.Abp.Hangfire" Version="3.3.2" />
+    </ItemGroup>
+
+</Project>
