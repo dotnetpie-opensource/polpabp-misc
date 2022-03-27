@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
+	<Import Project="..\..\common.abp.props" />
+
+	<PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.3.2</Version>		
         <AssemblyName>Volo.Abp.BackgroundWorkers.Hangfire</AssemblyName>
         <PackageId>Volo.Abp.BackgroundWorkers.Hangfire</PackageId>
         <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
