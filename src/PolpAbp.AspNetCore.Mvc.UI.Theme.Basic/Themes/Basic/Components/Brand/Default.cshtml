@@ -1,5 +1,13 @@
-﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+﻿@using Volo.Abp.Ui.Branding;
+@using Microsoft.Extensions.Configuration;
+
 @inject IBrandingProvider BrandingProvider
-<a class="navbar-brand" href="https://preworkscreen.com">
-    <img src="@BrandingProvider.LogoUrl" height="60" class="d-inline-block align-top" alt="Preworkscreen" />
+@inject IConfiguration Configuration
+
+@{
+    var appUrl = Configuration["App:SelfUrl"];
+}
+
+<a class="navbar-brand" href="@appUrl">
+    <img src="@BrandingProvider.LogoUrl" height="60" class="d-inline-block align-top" alt="@BrandingProvider.AppName" />
 </a>
