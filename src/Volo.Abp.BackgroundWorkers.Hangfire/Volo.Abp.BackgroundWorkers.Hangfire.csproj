@@ -15,8 +15,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="Volo.Abp.BackgroundWorkers" Version="3.3.2" />
-		<PackageReference Include="Volo.Abp.Hangfire" Version="3.3.2" />
+		<PackageReference Include="Volo.Abp.BackgroundWorkers" Version="5.3.2" />
+		<PackageReference Include="Volo.Abp.Hangfire" Version="5.3.2" />
     </ItemGroup>
 
 </Project>
