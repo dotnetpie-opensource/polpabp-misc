@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.Alerts;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.PageAlerts;
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.PageAlerts;
 
 public class PageAlertsViewComponent : AbpViewComponent
 {
