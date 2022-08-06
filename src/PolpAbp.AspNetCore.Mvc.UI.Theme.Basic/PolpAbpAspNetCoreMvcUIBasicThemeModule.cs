@@ -9,14 +9,12 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Abp.UI;
 
 namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
 {
     [DependsOn(
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
-        typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
-        typeof(AbpUiModule)
+        typeof(AbpAspNetCoreMvcUiMultiTenancyModule)
         )]
     public class PolpAbpAspNetCoreMvcUIBasicThemeModule : AbpModule
     {
