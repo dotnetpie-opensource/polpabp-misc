@@ -57,9 +57,7 @@
     <div class="@containerClass">
         <abp-row>
             <abp-column class="col mx-auto" style="max-width: 440px">
-                @if (MultiTenancyOptions.Value.IsEnabled &&
-                (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true ||
-                TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(QueryStringTenantResolveContributor.ContributorName) == true))
+                @if (CurrentTenant.IsAvailable)
                 {
                     <div class="card shadow-sm rounded mb-3">
                         <div class="card-body px-5">
@@ -79,13 +77,11 @@
                                         }
                                     </h6>
                                 </div>
-                                <div class="col-auto">
-                                    <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
-                                </div>
                             </div>
                         </div>
                     </div>
                 }
+
                 @(await Component.InvokeAsync<PageAlertsViewComponent>())
                 @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
                 @RenderBody()
