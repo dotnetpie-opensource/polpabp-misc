@@ -23,6 +23,8 @@
 @inject IConfiguration Configuration
 
 @{
+    // todo: Load settings for Users from cookie (maybe)
+
     Layout = null;
     var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
     var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
@@ -32,6 +34,16 @@
 
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
+
+    var bkgStyle = string.Empty;
+    var bkgClasses = string.Empty;
+    var bkgUrl = Configuration["WebUi:Account:Light"];
+    if (!string.IsNullOrEmpty(bkgUrl))
+    {
+        bkgUrl = Url.IsLocalUrl(bkgUrl) ? Url.Content(bkgUrl.EnsureStartsWith('~')) : bkgUrl;
+        bkgStyle = $"background-image: url({bkgUrl})";
+        bkgClasses = "bgi-position-y-bottom bgi-position-x-center bgi-no-repeat bgi-size-contain";
+    }
 }
 
 <!DOCTYPE html>
@@ -62,9 +74,10 @@
 <body class="abp-account-layout bg-light @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
 
-    <div class="@containerClass">
+    <div class="@containerClass @bkgClasses" style="@bkgStyle">
+
         <abp-row>
-            <abp-column class="col mx-auto w-lg-max-500 p-10 p-lg-15">
+            <abp-column class="col mx-auto w-lg-max-500 min-vh-100 p-10 p-lg-15">
 
                 <div class="d-flex justify-content-center my-4">
                     <h3>
