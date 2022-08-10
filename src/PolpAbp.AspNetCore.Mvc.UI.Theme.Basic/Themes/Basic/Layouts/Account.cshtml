@@ -1,4 +1,5 @@
-﻿@using Microsoft.Extensions.Localization
+﻿@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Localization
 @using Microsoft.Extensions.Options
 @using Volo.Abp.AspNetCore.MultiTenancy
 @using Volo.Abp.AspNetCore.Mvc.AntiForgery
@@ -19,11 +20,18 @@
 @inject ICurrentTenant CurrentTenant
 @inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
 @inject ITenantResolveResultAccessor TenantResolveResultAccessor
+@inject IConfiguration Configuration
 
 @{
     Layout = null;
     var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
     var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
+
+    var homePage = Configuration["WebUi:HomePage"] ?? "~";
+    homePage = Url.IsLocalUrl(homePage) ? Url.Content(homePage.EnsureStartsWith('~')) : homePage;
+
+    var logoUrl = @BrandingProvider.LogoUrl ?? "~";
+    logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
 }
 
 <!DOCTYPE html>
@@ -56,43 +64,50 @@
 
     <div class="@containerClass">
         <abp-row>
-            <abp-column class="col mx-auto" style="max-width: 440px">
+            <abp-column class="col mx-auto w-lg-max-500 p-10 p-lg-15">
 
-                <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center my-4">
                     <h3>
                         @BrandingProvider.AppName
                     </h3>
                 </div>
 
-                @if (CurrentTenant.IsAvailable)
-                {
-                    <div class="card shadow-sm rounded mb-3">
-                        <div class="card-body px-5">
-                            <div class="row">
-                                <div class="col">
-                                    <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
-                                    <h6 class="m-0 d-inline-block">
-                                        @if (CurrentTenant.Id == null)
-                                        {
-                                            <span>
-                                                @MultiTenancyStringLocalizer["NotSelected"]
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
-                                        }
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
+                <div class="card shadow-sm rounded mb-3">
+                    <div class="card-body p-5">
 
-                @(await Component.InvokeAsync<PageAlertsViewComponent>())
-                @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
-                @RenderBody()
-                @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
+                        <div class="d-flex mb-2 justify-content-between flex-wrap">
+                            <a href="@homePage">
+                                <img class="img-fluid h-40px" src="@logoUrl" alt="logo" />
+                            </a>
+
+                        </div>
+                        @if (CurrentTenant.IsAvailable)
+                        {
+                            <div class="d-flex flex-wrap mb-4">
+                                <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["Tenant"] : </span>
+                                <h6 class="m-0 d-inline-block">
+                                    @if (CurrentTenant.Id == null)
+                                    {
+                                        <span>
+                                            @MultiTenancyStringLocalizer["NotSelected"]
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                                    }
+                                </h6>
+                            </div>
+                        }
+
+                        @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                        @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
+                        @RenderBody()
+                        @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
+
+                    </div>
+                </div>
+
             </abp-column>
         </abp-row>
     </div>
