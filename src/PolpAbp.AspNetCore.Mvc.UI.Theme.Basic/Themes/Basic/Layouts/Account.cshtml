@@ -8,6 +8,7 @@
 @using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Bundling
 @using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.MainNavbar
 @using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.PageAlerts
+@using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.AccountTenancy
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
@@ -94,24 +95,8 @@
                             </a>
 
                         </div>
-                        @if (CurrentTenant.IsAvailable)
-                        {
-                            <div class="d-flex flex-wrap mb-4">
-                                <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["Tenant"] : </span>
-                                <h6 class="m-0 d-inline-block">
-                                    @if (CurrentTenant.Id == null)
-                                    {
-                                        <span>
-                                            @MultiTenancyStringLocalizer["NotSelected"]
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
-                                    }
-                                </h6>
-                            </div>
-                        }
+
+                        @(await Component.InvokeAsync<AccountTenancyViewComponent>())
 
                         @(await Component.InvokeAsync<PageAlertsViewComponent>())
                         @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)

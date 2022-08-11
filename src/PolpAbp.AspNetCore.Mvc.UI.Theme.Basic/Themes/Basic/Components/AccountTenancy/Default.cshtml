@@ -1,0 +1,25 @@
+﻿@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using Volo.Abp.MultiTenancy
+
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+
+@if (CurrentTenant.IsAvailable)
+{
+    <div class="d-flex flex-wrap mb-4">
+        <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["Tenant"] : </span>
+        <h6 class="m-0 d-inline-block">
+            @if (CurrentTenant.Id == null)
+            {
+                <span>
+                    @MultiTenancyStringLocalizer["NotSelected"]
+                </span>
+            }
+            else
+            {
+                <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+            }
+        </h6>
+    </div>
+}
