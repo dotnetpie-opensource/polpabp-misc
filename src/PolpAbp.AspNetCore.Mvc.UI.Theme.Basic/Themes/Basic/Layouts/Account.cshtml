@@ -37,7 +37,7 @@
 
     @if (ViewBag.Description != null)
     {
-<meta name="description" content="@(ViewBag.Description as string)" />}
+    <meta name="description" content="@(ViewBag.Description as string)" />}
     <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
 
     @await RenderSectionAsync("styles", false)
