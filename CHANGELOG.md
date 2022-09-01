@@ -1,3 +1,6 @@
+## 3.2.1 (September 01, 2022)
+
+
 ## 0.1.0 (September 01, 2022)
   - Remove redundant content security policy
   - script
