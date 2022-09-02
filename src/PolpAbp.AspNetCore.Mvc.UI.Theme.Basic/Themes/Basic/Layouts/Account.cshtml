@@ -30,7 +30,7 @@
     var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
     var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
 
-    var homePage = Configuration["WebUi:HomePage"] ?? "~";
+    var homePage = Configuration["PolpAbp:WebUi:HomePage"] ?? "~";
     homePage = Url.IsLocalUrl(homePage) ? Url.Content(homePage.EnsureStartsWith('~')) : homePage;
 
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
@@ -38,7 +38,7 @@
 
     var bkgStyle = string.Empty;
     var bkgClasses = string.Empty;
-    var bkgUrl = Configuration["WebUi:Account:Light"];
+    var bkgUrl = Configuration["PolpAbp:WebUi:Account:Light"];
     if (!string.IsNullOrEmpty(bkgUrl))
     {
         bkgUrl = Url.IsLocalUrl(bkgUrl) ? Url.Content(bkgUrl.EnsureStartsWith('~')) : bkgUrl;
