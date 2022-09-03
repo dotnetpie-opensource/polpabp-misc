@@ -1,7 +1,16 @@
 ﻿@using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Brand
 @using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Menu
 @using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Toolbar
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm flex-column flex-md-row mb-4" id="main-navbar" style="min-height: 4rem;">
+@using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.MainNavbar
+
+@model MainNavbarViewComponent.ViewModel
+@{
+    var bgCls = "navbar-dark bg-dark";
+    if (Model.IsLightBackground) {
+        bgCls = "bg-light";
+    }
+}
+<nav class="navbar navbar-expand-md shadow-sm flex-column flex-md-row mb-4 @bgCls" id="main-navbar" style="min-height: 4rem;">
     <div class="container">
         @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
