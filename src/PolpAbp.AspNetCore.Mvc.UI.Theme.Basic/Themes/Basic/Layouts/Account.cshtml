@@ -45,6 +45,10 @@
         bkgStyle = $"background-image: url({bkgUrl})";
         bkgClasses = "bgi-position-y-bottom bgi-position-x-center bgi-no-repeat bgi-size-contain";
     }
+
+    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : 
+    (ViewBag.Title + " | " + BrandingProvider.AppName); //TODO: Discard to get from Title
+
 }
 
 <!DOCTYPE html>
@@ -57,7 +61,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>@(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)</title>
+    <title>@pageTitle</title>
 
     @if (ViewBag.Description != null)
     {
@@ -124,8 +128,8 @@
 
     <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
 
-    @*<script src="~/Abp/ApplicationConfigurationScript"></script>
-    <script src="~/Abp/ServiceProxyScript"></script>*@
+    <script src="~/Abp/ApplicationConfigurationScript"></script>
+    <script src="~/Abp/ServiceProxyScript"></script>
 
     @await RenderSectionAsync("scripts", false)
 
