@@ -9,6 +9,8 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.Localization;
+using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
 
 namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
 {
@@ -41,6 +43,13 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBasicThemeModule>("PolpAbp.AspNetCore.Mvc.UI.Theme.Basic");
+            });
+
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                    .Get<AbpUiMultiTenancyResource>()
+                    .AddVirtualJson("/Localization/MultiTenancy/Resources");
             });
 
             Configure<AbpToolbarOptions>(options =>

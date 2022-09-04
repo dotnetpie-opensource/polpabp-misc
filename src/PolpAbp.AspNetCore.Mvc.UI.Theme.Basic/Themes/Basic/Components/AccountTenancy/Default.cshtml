@@ -8,7 +8,7 @@
 @if (CurrentTenant.IsAvailable)
 {
     <div class="d-flex flex-wrap mb-4">
-        <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["Tenant"] : </span>
+        <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["TenantAlt"] : </span>
         <h6 class="m-0 d-inline-block">
             @if (CurrentTenant.Id == null)
             {
