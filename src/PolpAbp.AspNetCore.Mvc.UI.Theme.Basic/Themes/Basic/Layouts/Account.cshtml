@@ -75,6 +75,12 @@
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
 
+    <script type="text/javascript">
+        const environments = {
+            passwordInputSelector: "#password-wrapper"
+        };
+    </script>
+
 </head>
 <body class="abp-account-layout bg-light @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
