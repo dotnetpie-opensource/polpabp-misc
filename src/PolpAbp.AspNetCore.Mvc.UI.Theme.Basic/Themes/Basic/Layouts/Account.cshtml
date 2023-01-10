@@ -46,9 +46,10 @@
         bkgClasses = "bgi-position-y-bottom bgi-position-x-center bgi-no-repeat bgi-size-contain";
     }
 
-    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : 
+    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName :
     (ViewBag.Title + " | " + BrandingProvider.AppName); //TODO: Discard to get from Title
 
+    var showResetButton = ViewBag.ShowResetButton ?? false;
 }
 
 <!DOCTYPE html>
@@ -95,24 +96,21 @@
                         @BrandingProvider.AppName
                     </h3>
                 </div>
-  
+
 
                 <div class="card shadow-sm rounded mb-3">
                     <div class="card-body p-5">
-                        @(
-                            await Component.InvokeAsync<MainNavbarViewComponent>(new { isLight = true })
-                             )
+                        @(await Component.InvokeAsync<MainNavbarViewComponent>(new { isLight = true }))
 
-@*                        <div class="d-flex mb-2 justify-content-between flex-wrap">
-                            <a href="@homePage">
-                                <img class="img-fluid h-40px" src="@logoUrl" alt="logo" />
-                            </a>
+                        @*                        <div class="d-flex mb-2 justify-content-between flex-wrap">
+                        <a href="@homePage">
+                        <img class="img-fluid h-40px" src="@logoUrl" alt="logo" />
+                        </a>
 
                         </div>
-*@
+                        *@
 
-
-                        @(await Component.InvokeAsync<AccountTenancyViewComponent>())
+                        @(await Component.InvokeAsync<AccountTenancyViewComponent>(new { showResetBtn = showResetButton }))
 
                         @(await Component.InvokeAsync<PageAlertsViewComponent>())
                         @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
