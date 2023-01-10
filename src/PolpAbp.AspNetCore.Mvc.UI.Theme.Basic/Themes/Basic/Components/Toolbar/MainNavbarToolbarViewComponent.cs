@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Toolbar;
+namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar;
 
 public class MainNavbarToolbarViewComponent : AbpViewComponent
 {

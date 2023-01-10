@@ -1,7 +1,7 @@
 ﻿using Volo.Abp.AspNetCore.Mvc.UI.Theming;
 using Volo.Abp.DependencyInjection;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
+namespace PolpAbp.AspNetCore.Mvc.UI
 {
     [ThemeName(Name)]
     public class BasicTheme : ITheme, ITransientDependency

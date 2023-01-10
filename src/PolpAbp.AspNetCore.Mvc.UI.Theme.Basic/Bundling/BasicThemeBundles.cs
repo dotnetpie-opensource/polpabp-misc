@@ -1,4 +1,4 @@
-﻿namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Bundling
+﻿namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
 {
     public static class BasicThemeBundles
     {

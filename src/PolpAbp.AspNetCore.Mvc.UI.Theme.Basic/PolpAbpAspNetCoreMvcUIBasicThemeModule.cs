@@ -1,18 +1,18 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PolpAbp.AspNetCore.Mvc.UI.Bundling;
+using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
-using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
-using PolpAbp.AspNetCore.Mvc.UI.Theme.Basic.Toolbars;
+using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Abp.Localization;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
+namespace PolpAbp.AspNetCore.Mvc.UI
 {
     [DependsOn(
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
@@ -42,7 +42,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Basic
 
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBasicThemeModule>("PolpAbp.AspNetCore.Mvc.UI.Theme.Basic");
+                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBasicThemeModule>("PolpAbp.AspNetCore.Mvc.UI");
             });
 
             Configure<AbpLocalizationOptions>(options =>
