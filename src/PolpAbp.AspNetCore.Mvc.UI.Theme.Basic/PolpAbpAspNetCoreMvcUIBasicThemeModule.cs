@@ -49,7 +49,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI
             {
                 options.Resources
                     .Get<AbpUiMultiTenancyResource>()
-                    .AddVirtualJson("/Localization/MultiTenancy/Resources");
+                    .AddVirtualJson("/Localization/PolpAbp/Theme/Basic/MultiTenancy");
             });
 
             Configure<AbpToolbarOptions>(options =>
