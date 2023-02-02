@@ -2,6 +2,7 @@
 {
     public class Model
     {
+        public bool Hidden { get; set; }
         public bool ShowResetButton { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 @inject ICurrentTenant CurrentTenant
 @inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
 
-@if (CurrentTenant.IsAvailable)
+@if (!Model.Hidden && CurrentTenant.IsAvailable)
 {
     <form method="post">
         <div class="d-flex flex-wrap mb-4 align-items-center">
