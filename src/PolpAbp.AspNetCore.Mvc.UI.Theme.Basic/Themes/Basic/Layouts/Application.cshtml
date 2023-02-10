@@ -50,6 +50,12 @@
     @await RenderSectionAsync("styles", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Application)
+
+    <script type="text/javascript">
+        const environments = {
+        };
+    </script>
+
 </head>
 <body class="abp-application-layout bg-light @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Application)
