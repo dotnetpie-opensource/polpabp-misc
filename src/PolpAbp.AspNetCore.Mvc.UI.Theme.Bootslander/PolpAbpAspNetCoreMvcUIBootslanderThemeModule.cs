@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PolpAbp.AspNetCore.Mvc.UI.Bundling;
-using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Toolbars;
+using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling;
+using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
@@ -12,19 +12,19 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
 
-namespace PolpAbp.AspNetCore.Mvc.UI
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
 {
     [DependsOn(
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule)
         )]
-    public class PolpAbpAspNetCoreMvcUIBasicThemeModule : AbpModule
+    public class PolpAbpAspNetCoreMvcUIBootslanderThemeModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             PreConfigure<IMvcBuilder>(mvcBuilder =>
             {
-                mvcBuilder.AddApplicationPartIfNotExists(typeof(PolpAbpAspNetCoreMvcUIBasicThemeModule).Assembly);
+                mvcBuilder.AddApplicationPartIfNotExists(typeof(PolpAbpAspNetCoreMvcUIBootslanderThemeModule).Assembly);
             });
         }
 
@@ -32,49 +32,37 @@ namespace PolpAbp.AspNetCore.Mvc.UI
         {
             Configure<AbpThemingOptions>(options =>
             {
-                options.Themes.Add<BasicTheme>();
+                options.Themes.Add<BootslanderTheme>();
 
                 if (options.DefaultThemeName == null)
                 {
-                    options.DefaultThemeName = BasicTheme.Name;
+                    options.DefaultThemeName = BootslanderTheme.Name;
                 }
-            });
-
-            Configure<AbpVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBasicThemeModule>("PolpAbp.AspNetCore.Mvc.UI");
-            });
-
-            Configure<AbpLocalizationOptions>(options =>
-            {
-                options.Resources
-                    .Get<AbpUiMultiTenancyResource>()
-                    .AddVirtualJson("/Localization/PolpAbp/Theme/Basic/MultiTenancy");
             });
 
             Configure<AbpToolbarOptions>(options =>
             {
-                options.Contributors.Add(new BasicThemeMainTopToolbarContributor());
+                options.Contributors.Add(new BootslanderThemeMainTopToolbarContributor());
             });
 
             Configure<AbpBundlingOptions>(options =>
             {
                 options
                     .StyleBundles
-                    .Add(BasicThemeBundles.Styles.Global, bundle =>
+                    .Add(BootslanderThemeBundles.Styles.Global, bundle =>
                     {
                         bundle
                             .AddBaseBundles(StandardBundles.Styles.Global)
-                            .AddContributors(typeof(BasicThemeGlobalStyleContributor));
+                            .AddContributors(typeof(BootslanderThemeGlobalStyleContributor));
                     });
 
                 options
                     .ScriptBundles
-                    .Add(BasicThemeBundles.Scripts.Global, bundle =>
+                    .Add(BootslanderThemeBundles.Scripts.Global, bundle =>
                     {
                         bundle
                             .AddBaseBundles(StandardBundles.Scripts.Global)
-                            .AddContributors(typeof(BasicThemeGlobalScriptContributor));
+                            .AddContributors(typeof(BootslanderThemeGlobalScriptContributor));
                     });
             });
         }

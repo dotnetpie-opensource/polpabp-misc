@@ -5,9 +5,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-		<RootNamespace>PolpAbp.AspNetCore.Mvc.UI</RootNamespace>
-		<AssemblyName>PolpAbp.AspNetCore.Mvc.UI.Theme.Basic</AssemblyName>
-		<PackageId>PolpAbp.AspNetCore.Mvc.UI.Theme.Basic</PackageId>
+		<AssemblyName>PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander</AssemblyName>
+		<PackageId>PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander</PackageId>
 		<AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -25,8 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Localization\PolpAbp\Theme\Basic\MultiTenancy\*.json" />
-		<Content Remove="Localization\PolpAbp\Theme\Basic\MultiTenancy\*.json" />
+		<Content Remove="Localization\PolpAbp\Theme\Bootslander\MultiTenancy\*.json" />
 	</ItemGroup>
 
 	<ItemGroup>

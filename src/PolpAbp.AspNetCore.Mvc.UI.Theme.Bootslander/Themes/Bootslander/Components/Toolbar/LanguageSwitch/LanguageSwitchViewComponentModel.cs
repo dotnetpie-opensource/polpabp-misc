@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Volo.Abp.Localization;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.LanguageSwitch;
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.Toolbar.LanguageSwitch;
 
 public class LanguageSwitchViewComponentModel
 {

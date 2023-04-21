@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.LanguageSwitch;
-using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.UserMenu;
+using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.Toolbar.LanguageSwitch;
+using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.Toolbar.UserMenu;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.Localization;
 using Volo.Abp.Users;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Toolbars
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Toolbars
 {
-    public class BasicThemeMainTopToolbarContributor : IToolbarContributor
+    public class BootslanderThemeMainTopToolbarContributor : IToolbarContributor
     {
         public async Task ConfigureToolbarAsync(IToolbarConfigurationContext context)
         {
@@ -17,7 +17,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Toolbars
                 return;
             }
 
-            if (!(context.Theme is BasicTheme))
+            if (!(context.Theme is BootslanderTheme))
             {
                 return;
             }

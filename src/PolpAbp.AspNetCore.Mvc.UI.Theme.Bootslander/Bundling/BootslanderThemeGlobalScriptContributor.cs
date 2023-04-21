@@ -1,12 +1,12 @@
 ﻿using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
 {
-    public class BasicThemeGlobalScriptContributor : BundleContributor
+    public class BootslanderThemeGlobalScriptContributor : BundleContributor
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            context.Files.Add("/themes/basic/layout.js");
+            context.Files.Add("/themes/bootslander/layout.js");
         }
     }
 }

@@ -1,25 +1,25 @@
 ﻿using Volo.Abp.AspNetCore.Mvc.UI.Theming;
 using Volo.Abp.DependencyInjection;
 
-namespace PolpAbp.AspNetCore.Mvc.UI
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
 {
     [ThemeName(Name)]
-    public class BasicTheme : ITheme, ITransientDependency
+    public class BootslanderTheme : ITheme, ITransientDependency
     {
-        public const string Name = "Basic";
+        public const string Name = "Bootslander";
 
         public virtual string GetLayout(string name, bool fallbackToDefault = true)
         {
             switch (name)
             {
                 case StandardLayouts.Application:
-                    return "~/Themes/Basic/Layouts/Application.cshtml";
+                    return "~/Themes/Bootslander/Layouts/Application.cshtml";
                 case StandardLayouts.Account:
-                    return "~/Themes/Basic/Layouts/Account.cshtml";
+                    return "~/Themes/Bootslander/Layouts/Account.cshtml";
                 case StandardLayouts.Empty:
-                    return "~/Themes/Basic/Layouts/Empty.cshtml";
+                    return "~/Themes/Bootslander/Layouts/Empty.cshtml";
                 default:
-                    return fallbackToDefault ? "~/Themes/Basic/Layouts/Application.cshtml" : null;
+                    return fallbackToDefault ? "~/Themes/Bootslander/Layouts/Application.cshtml" : null;
             }
         }
     }

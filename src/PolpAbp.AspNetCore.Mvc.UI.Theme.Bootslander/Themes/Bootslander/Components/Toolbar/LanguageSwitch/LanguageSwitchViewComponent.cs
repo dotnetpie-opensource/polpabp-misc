@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Localization;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.LanguageSwitch;
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.Toolbar.LanguageSwitch;
 
 public class LanguageSwitchViewComponent : AbpViewComponent
 {
@@ -52,6 +52,6 @@ public class LanguageSwitchViewComponent : AbpViewComponent
             OtherLanguages = languages.Where(l => l != currentLanguage).ToList()
         };
 
-        return View("~/Themes/Basic/Components/Toolbar/LanguageSwitch/Default.cshtml", model);
+        return View("~/Themes/Bootslander/Components/Toolbar/LanguageSwitch/Default.cshtml", model);
     }
 }

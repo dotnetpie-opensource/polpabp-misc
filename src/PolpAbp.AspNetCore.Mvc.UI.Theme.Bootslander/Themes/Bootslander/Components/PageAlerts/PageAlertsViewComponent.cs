@@ -2,7 +2,7 @@
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.Alerts;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.PageAlerts;
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.PageAlerts;
 
 public class PageAlertsViewComponent : AbpViewComponent
 {
@@ -15,6 +15,6 @@ public class PageAlertsViewComponent : AbpViewComponent
 
     public IViewComponentResult Invoke(string name)
     {
-        return View("~/Themes/Basic/Components/PageAlerts/Default.cshtml", AlertManager.Alerts);
+        return View("~/Themes/Bootslander/Components/PageAlerts/Default.cshtml", AlertManager.Alerts);
     }
 }

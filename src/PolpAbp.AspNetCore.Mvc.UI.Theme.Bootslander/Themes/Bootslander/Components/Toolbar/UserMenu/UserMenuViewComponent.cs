@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.UI.Navigation;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.UserMenu;
+namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Themes.Bootslander.Components.Toolbar.UserMenu;
 
 public class UserMenuViewComponent : AbpViewComponent
 {
@@ -17,6 +17,6 @@ public class UserMenuViewComponent : AbpViewComponent
     public virtual async Task<IViewComponentResult> InvokeAsync()
     {
         var menu = await MenuManager.GetAsync(StandardMenus.User);
-        return View("~/Themes/Basic/Components/Toolbar/UserMenu/Default.cshtml", menu);
+        return View("~/Themes/Bootslander/Components/Toolbar/UserMenu/Default.cshtml", menu);
     }
 }
