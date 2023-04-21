@@ -12,14 +12,10 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
         {
             switch (name)
             {
-                case StandardLayouts.Application:
-                    return "~/Themes/Bootslander/Layouts/Application.cshtml";
-                case StandardLayouts.Account:
-                    return "~/Themes/Bootslander/Layouts/Account.cshtml";
                 case StandardLayouts.Empty:
                     return "~/Themes/Bootslander/Layouts/Empty.cshtml";
                 default:
-                    return fallbackToDefault ? "~/Themes/Bootslander/Layouts/Application.cshtml" : null;
+                    return fallbackToDefault ? "~/Themes/Bootslander/Layouts/Empty.cshtml" : null;
             }
         }
     }
