@@ -40,6 +40,11 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                 }
             });
 
+            Configure<AbpVirtualFileSystemOptions>(options =>
+            {
+                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBootslanderThemeModule>("PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander");
+            });
+
             Configure<AbpToolbarOptions>(options =>
             {
                 options.Contributors.Add(new BootslanderThemeMainTopToolbarContributor());

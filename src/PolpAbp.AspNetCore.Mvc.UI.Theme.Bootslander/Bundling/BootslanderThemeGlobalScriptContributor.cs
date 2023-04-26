@@ -6,6 +6,14 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
+            context.Files.Add("/libs/jquery/jquery.js");
+            context.Files.Add("/libs/bootstrap/js/bootstrap.bundle.js");
+            context.Files.Add("/libs/lodash/lodash.min.js");
+            context.Files.Add("/libs/purecounter/js/purecounter_vanilla.js");
+            context.Files.Add("/libs/glightbox/js/glightbox.min.js");
+            context.Files.Add("/libs/aos/aos.js");
+            context.Files.Add("/libs/swiper/swiper-bundle.js");
+
             context.Files.Add("/themes/bootslander/layout.js");
         }
     }
