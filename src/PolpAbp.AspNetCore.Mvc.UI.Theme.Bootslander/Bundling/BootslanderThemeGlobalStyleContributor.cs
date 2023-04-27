@@ -21,7 +21,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
             context.Files.Add("/libs/bootstrap-icons/font/bootstrap-icons.css");
             context.Files.Add("/libs/boxicons/css/boxicons.css");
             context.Files.Add("/libs/glightbox/css/glightbox.css");
-            context.Files.Add("/libs/remixicon/remixicon.css");
+            context.Files.Add("/libs/remixicon/fonts/remixicon.css");
             context.Files.Add("/libs/swiper/swiper-bundle.css");
 
             context.Files.Add("/themes/bootslander/layout.css");

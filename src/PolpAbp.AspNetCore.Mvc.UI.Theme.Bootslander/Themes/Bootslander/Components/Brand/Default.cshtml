@@ -12,6 +12,6 @@
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
 }
 
-<a class="navbar-brand" href="@appUrl">
-    <img src="@logoUrl" height="60" class="d-inline-block align-text-top" alt="@BrandingProvider.AppName" />
+<a href="@appUrl">
+    <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
 </a>

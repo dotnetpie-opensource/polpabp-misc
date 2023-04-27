@@ -57,7 +57,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                     .Add(BootslanderThemeBundles.Styles.Global, bundle =>
                     {
                         bundle
-                            .AddBaseBundles(StandardBundles.Styles.Global)
+                            // .AddBaseBundles(StandardBundles.Styles.Global)
                             .AddContributors(typeof(BootslanderThemeGlobalStyleContributor));
                     });
 
@@ -66,7 +66,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                     .Add(BootslanderThemeBundles.Scripts.Global, bundle =>
                     {
                         bundle
-                            .AddBaseBundles(StandardBundles.Scripts.Global)
+                            // .AddBaseBundles(StandardBundles.Scripts.Global)
                             .AddContributors(typeof(BootslanderThemeGlobalScriptContributor));
                     });
             });
