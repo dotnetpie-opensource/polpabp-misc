@@ -1,14 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling;
-using PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
 
@@ -45,11 +40,6 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                 options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBootslanderThemeModule>("PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander");
             });
 
-            Configure<AbpToolbarOptions>(options =>
-            {
-                options.Contributors.Add(new BootslanderThemeMainTopToolbarContributor());
-            });
-
             Configure<AbpBundlingOptions>(options =>
             {
                 options
@@ -57,7 +47,6 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                     .Add(BootslanderThemeBundles.Styles.Global, bundle =>
                     {
                         bundle
-                            // .AddBaseBundles(StandardBundles.Styles.Global)
                             .AddContributors(typeof(BootslanderThemeGlobalStyleContributor));
                     });
 
@@ -66,7 +55,6 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander
                     .Add(BootslanderThemeBundles.Scripts.Global, bundle =>
                     {
                         bundle
-                            // .AddBaseBundles(StandardBundles.Scripts.Global)
                             .AddContributors(typeof(BootslanderThemeGlobalScriptContributor));
                     });
             });
