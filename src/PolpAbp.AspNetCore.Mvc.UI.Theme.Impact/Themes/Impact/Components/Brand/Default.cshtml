@@ -12,6 +12,6 @@
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
 }
 
-<a href="@appUrl">
-    <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
+<a href="@appUrl" class="logo d-flex align-items-center">
+    <img src="@logoUrl" class="img-fluid" alt="@BrandingProvider.AppName" />
 </a>

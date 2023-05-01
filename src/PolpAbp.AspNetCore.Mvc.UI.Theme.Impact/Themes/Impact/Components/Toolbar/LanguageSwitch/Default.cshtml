@@ -4,8 +4,8 @@
 @model LanguageSwitchViewComponentModel
 @if (Model.OtherLanguages.Any())
 {
-    <div class="dropdown">
-        <a href="#"><span>@Model.CurrentLanguage.DisplayName</span> <i class="bi bi-chevron-down"></i></a>
+    <li class="dropdown">
+        <a href="#"><span>@Model.CurrentLanguage.DisplayName</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
         <ul>
             @foreach (var language in Model.OtherLanguages)
             {
@@ -14,5 +14,5 @@
                 </li>
             }
         </ul>
-    </div>
+    </li>
 }

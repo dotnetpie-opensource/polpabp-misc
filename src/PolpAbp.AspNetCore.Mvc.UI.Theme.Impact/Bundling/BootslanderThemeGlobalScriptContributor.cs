@@ -13,6 +13,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Impact.Bundling
             context.Files.Add("/libs/glightbox/js/glightbox.js");
             context.Files.Add("/libs/aos/aos.js");
             context.Files.Add("/libs/swiper/swiper-bundle.js");
+            context.Files.Add("/libs/sotope-layout/isotope.pkgd.js");
 
             context.Files.Add("/themes/impact/layout.js");
         }
