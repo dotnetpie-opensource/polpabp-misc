@@ -1,0 +1,17 @@
+﻿@using Volo.Abp.Ui.Branding
+@using Microsoft.Extensions.Configuration
+
+@inject IBrandingProvider BrandingProvider
+@inject IConfiguration Configuration
+
+@{
+    var appUrl = Configuration["App:SelfUrl"] ?? "~";
+    appUrl = Url.IsLocalUrl(appUrl) ? Url.Content(appUrl.EnsureStartsWith('~')) : appUrl;
+
+    var logoUrl = @BrandingProvider.LogoUrl ?? "~";
+    logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
+}
+
+<a href="@appUrl">
+    <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
+</a>
