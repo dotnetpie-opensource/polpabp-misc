@@ -51,6 +51,14 @@
 
     var showResetButton = ViewBag.ShowResetButton ?? false;
     var hideTenancyView = ViewBag.hideTenancyView ?? false;
+
+    var favicon = Configuration["PolpAbp:WebUi:Favicon"];
+    favicon = favicon ?? "~/favicon.ico";
+
+    var vectorIcon = Configuration["PolpAbp:WebUi:VectorFavicon"];
+    var appleTouchIcon = Configuration["PolpAbp:WebUi:AppleTouchIcon"];
+
+    var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
 }
 
 <!DOCTYPE html>
@@ -60,15 +68,34 @@
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="icon" href="@favicon">
+    @if (!string.IsNullOrEmpty(vectorIcon))
+    {
+        <link rel="icon" href="@vectorIcon" type="image/svg+xml">
+    }
+    @if (!string.IsNullOrEmpty(appleTouchIcon))
+    {
+        <link rel="apple-touch-icon" href="@appleTouchIcon">
+    }
 
     <title>@pageTitle</title>
 
+    @if (!string.IsNullOrEmpty(applicationName))
+    {
+        <meta name="application-name" content="@applicationName" />
+    }
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name="keywords" content="@(ViewBag.Keywords as string)" />
+    }
     @if (ViewBag.Description != null)
     {
         <meta name="description" content="@(ViewBag.Description as string)" />
     }
+
     <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
 
     @await RenderSectionAsync("styles", false)
