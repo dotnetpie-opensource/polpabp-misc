@@ -8,9 +8,11 @@
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
 @using Volo.Abp.Localization
 @using Volo.Abp.Ui.Branding
+@using Microsoft.Extensions.Configuration
 
 @inject IBrandingProvider BrandingProvider
 @inject IPageLayout PageLayout
+@inject IConfiguration Configuration
 @{
     Layout = null;
     var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
@@ -28,6 +30,14 @@
     }
 
     var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
+
+    var favicon = Configuration["PolpAbp:WebUi:Favicon"];
+    favicon = favicon ?? "~/favicon.ico";
+
+    var vectorIcon = Configuration["PolpAbp:WebUi:VectorFavicon"];
+    var appleTouchIcon = Configuration["PolpAbp:WebUi:AppleTouchIcon"];
+
+    var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
 }
 
 <!DOCTYPE html>
@@ -40,7 +50,18 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+    <link rel="icon" href="@favicon">
+    @if (!string.IsNullOrEmpty(vectorIcon))
+    {
+        <link rel="icon" href="@vectorIcon" type="image/svg+xml">
+    }
+    @if (!string.IsNullOrEmpty(appleTouchIcon))
+    {
+        <link rel="apple-touch-icon" href="@appleTouchIcon">
+    }
+
     <title>@pageTitle</title>
+
     @if (ViewBag.Description != null)
     {
         <meta name="description" content="@ViewBag.Description" />
@@ -56,12 +77,10 @@
 
     @await RenderSectionAsync("styles", false)
 
-    <script type="text/javascript">
-        const environments = {
-        };
-    </script>
+    <script type="text/javascript">const environments = {
+        };</script>
 </head>
-<body class="abp-empty-layout @rtl">        
+<body class="abp-empty-layout @rtl">
     @RenderBody()
 
     <abp-script-bundle name="@BootslanderThemeBundles.Scripts.Global" />
