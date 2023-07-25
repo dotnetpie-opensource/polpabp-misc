@@ -34,9 +34,19 @@
 
     var favicon = Configuration["PolpAbp:WebUi:Favicon"];
     favicon = favicon ?? "~/favicon.ico";
+    favicon = Url.IsLocalUrl(favicon) ? Url.Content(favicon.EnsureStartsWith('~')) : favicon;
 
     var vectorIcon = Configuration["PolpAbp:WebUi:VectorFavicon"];
+    if (!string.IsNullOrEmpty(vectorIcon))
+    {
+        vectorIcon = Url.IsLocalUrl(vectorIcon) ? Url.Content(vectorIcon.EnsureStartsWith('~')) : vectorIcon;
+    }
+
     var appleTouchIcon = Configuration["PolpAbp:WebUi:AppleTouchIcon"];
+    if (!string.IsNullOrEmpty(appleTouchIcon))
+    {
+        appleTouchIcon = Url.IsLocalUrl(appleTouchIcon) ? Url.Content(appleTouchIcon.EnsureStartsWith('~')) : appleTouchIcon;
+    }
 
     var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
 }
