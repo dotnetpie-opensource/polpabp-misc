@@ -821,6 +821,23 @@ section {
             border-radius: 0;
         }
 
+.about .btn-learn-more {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: #fff;
+    background: #1acc8d;
+}
+
+    .about .btn-learn-more:hover {
+        background: #17b57d;
+    }
+
 @keyframes pulsate-btn {
     0% {
         transform: scale(0.6, 0.6);
