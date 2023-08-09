@@ -412,7 +412,8 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
     width: 100%;
-    background: url("../img/hero-bg.jpg");
+/*    background: url("../img/hero-bg.jpg");
+*/    
     position: relative;
     padding: 120px 0 0 0;
 }
@@ -744,8 +745,8 @@ section {
         }
 
     .about .video-box {
-        background: url("../img/about.png") center center no-repeat;
-        background-size: contain;
+/*        background: url("../img/about.png") center center no-repeat;
+*/        background-size: contain;
         min-height: 300px;
     }
 
@@ -1023,8 +1024,8 @@ section {
 --------------------------------------------------------------*/
 .testimonials {
     padding: 80px 0;
-    background: url("../img/cta-bg.jpg") no-repeat;
-    background-position: center center;
+/*    background: url("../img/cta-bg.jpg") no-repeat;
+*/    background-position: center center;
     background-size: cover;
     position: relative;
 }
