@@ -54,6 +54,8 @@
 
 <html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
 <head>
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Empty)
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -89,8 +91,13 @@
 
     <script type="text/javascript">const environments = {
         };</script>
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
+
 </head>
 <body class="abp-empty-layout @rtl">
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
+
     @RenderBody()
 
     <abp-script-bundle name="@BootslanderThemeBundles.Scripts.Global" />
@@ -99,5 +106,6 @@
 
     @await RenderSectionAsync("docReady", false)
 
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Empty)
 </body>
 </html>
