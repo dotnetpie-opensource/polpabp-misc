@@ -75,6 +75,10 @@
 
     <title>@pageTitle</title>
 
+    @if (ViewBag.MetaTitle != null)
+    {
+        <meta name="title" content="@ViewBag.MetaTitle" />
+    }
     @if (ViewBag.Description != null)
     {
         <meta name="description" content="@ViewBag.Description" />
