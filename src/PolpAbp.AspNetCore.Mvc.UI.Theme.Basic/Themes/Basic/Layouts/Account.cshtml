@@ -98,6 +98,11 @@
     {
         <meta name="application-name" content="@applicationName" />
     }
+    @if (ViewBag.MetaTitle != null)
+    {
+        <meta name="title" content="@ViewBag.MetaTitle" />
+    }
+    <!-- Keywords are becoming legacy -->
     @if (ViewBag.Keywords != null)
     {
         <meta name="keywords" content="@(ViewBag.Keywords as string)" />
