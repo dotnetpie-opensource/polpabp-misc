@@ -5,13 +5,13 @@
 @inject IConfiguration Configuration
 
 @{
-    var appUrl = Configuration["App:SelfUrl"] ?? "~";
-    appUrl = Url.IsLocalUrl(appUrl) ? Url.Content(appUrl.EnsureStartsWith('~')) : appUrl;
+    var homePageUrl = Configuration["WebUi:HomePage"] ?? Configuration["App:SelfUrl"] ?? "~";
+    homePageUrl = Url.IsLocalUrl(homePageUrl) ? Url.Content(homePageUrl.EnsureStartsWith('~')) : homePageUrl;
 
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
 }
 
-<a class="navbar-brand" href="@appUrl">
+<a class="navbar-brand" href="@homePageUrl">
     <img src="@logoUrl" height="60" class="d-inline-block align-text-top" alt="@BrandingProvider.AppName" />
 </a>

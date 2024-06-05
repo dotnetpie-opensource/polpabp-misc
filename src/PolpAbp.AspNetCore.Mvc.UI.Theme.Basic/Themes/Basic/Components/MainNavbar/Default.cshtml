@@ -10,7 +10,7 @@
         bgCls = "bg-light";
     }
 }
-<nav class="navbar navbar-expand-md shadow-sm flex-column flex-md-row mb-4 @bgCls" id="main-navbar" style="min-height: 4rem;">
+<nav class="navbar navbar-expand-md flex-column flex-md-row @bgCls" id="main-navbar" style="min-height: 4rem;">
     <div class="container">
         @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
