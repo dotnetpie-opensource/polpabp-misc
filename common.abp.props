@@ -1,8 +1,0 @@
-<Project>
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <Version>3.3.2</Version>
-    <NoWarn>$(NoWarn);CS1591;CS0436</NoWarn>
-	<AbpProjectType>app</AbpProjectType>
-  </PropertyGroup>
-</Project>
