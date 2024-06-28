@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
+namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.AccountTenancy
 {
     public class AccountTenancyViewComponent : AbpViewComponent
     {

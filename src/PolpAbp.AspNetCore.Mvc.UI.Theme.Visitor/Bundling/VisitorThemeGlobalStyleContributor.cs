@@ -2,7 +2,7 @@
 
 namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
 {
-    public class BasicThemeGlobalStyleContributor : BundleContributor
+    public class VisitorThemeGlobalStyleContributor : BundleContributor
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {

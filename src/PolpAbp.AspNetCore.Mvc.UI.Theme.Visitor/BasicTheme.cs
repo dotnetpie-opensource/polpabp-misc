@@ -4,7 +4,7 @@ using Volo.Abp.DependencyInjection;
 namespace PolpAbp.AspNetCore.Mvc.UI
 {
     [ThemeName(Name)]
-    public class BasicTheme : ITheme, ITransientDependency
+    public class VisitorTheme : ITheme, ITransientDependency
     {
         public const string Name = "Basic";
 

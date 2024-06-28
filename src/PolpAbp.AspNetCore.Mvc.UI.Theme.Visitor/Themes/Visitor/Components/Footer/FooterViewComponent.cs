@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Footer
+namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.Footer
 {
     public partial class FooterViewComponent : AbpViewComponent
     {

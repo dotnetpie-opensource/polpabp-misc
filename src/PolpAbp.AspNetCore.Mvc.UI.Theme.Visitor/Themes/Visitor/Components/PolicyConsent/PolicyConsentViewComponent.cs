@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.PolicyConsent;
+namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.PolicyConsent;
 
 public class PolicyConsentViewComponent : ViewComponent
 {

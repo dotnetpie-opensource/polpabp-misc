@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PolpAbp.AspNetCore.Mvc.UI.Bundling;
-using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Toolbars;
+using PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization;
@@ -18,13 +18,13 @@ namespace PolpAbp.AspNetCore.Mvc.UI
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule)
         )]
-    public class PolpAbpAspNetCoreMvcUIBasicThemeModule : AbpModule
+    public class PolpAbpAspNetCoreMvcUIVisitorThemeModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             PreConfigure<IMvcBuilder>(mvcBuilder =>
             {
-                mvcBuilder.AddApplicationPartIfNotExists(typeof(PolpAbpAspNetCoreMvcUIBasicThemeModule).Assembly);
+                mvcBuilder.AddApplicationPartIfNotExists(typeof(PolpAbpAspNetCoreMvcUIVisitorThemeModule).Assembly);
             });
         }
 
@@ -32,17 +32,17 @@ namespace PolpAbp.AspNetCore.Mvc.UI
         {
             Configure<AbpThemingOptions>(options =>
             {
-                options.Themes.Add<BasicTheme>();
+                options.Themes.Add<VisitorTheme>();
 
                 if (options.DefaultThemeName == null)
                 {
-                    options.DefaultThemeName = BasicTheme.Name;
+                    options.DefaultThemeName = VisitorTheme.Name;
                 }
             });
 
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIBasicThemeModule>("PolpAbp.AspNetCore.Mvc.UI");
+                options.FileSets.AddEmbedded<PolpAbpAspNetCoreMvcUIVisitorThemeModule>("PolpAbp.AspNetCore.Mvc.UI");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -54,27 +54,27 @@ namespace PolpAbp.AspNetCore.Mvc.UI
 
             Configure<AbpToolbarOptions>(options =>
             {
-                options.Contributors.Add(new BasicThemeMainTopToolbarContributor());
+                options.Contributors.Add(new VisitorThemeMainTopToolbarContributor());
             });
 
             Configure<AbpBundlingOptions>(options =>
             {
                 options
                     .StyleBundles
-                    .Add(BasicThemeBundles.Styles.Global, bundle =>
+                    .Add(VisitorThemeBundles.Styles.Global, bundle =>
                     {
                         bundle
                             .AddBaseBundles(StandardBundles.Styles.Global)
-                            .AddContributors(typeof(BasicThemeGlobalStyleContributor));
+                            .AddContributors(typeof(VisitorThemeGlobalStyleContributor));
                     });
 
                 options
                     .ScriptBundles
-                    .Add(BasicThemeBundles.Scripts.Global, bundle =>
+                    .Add(VisitorThemeBundles.Scripts.Global, bundle =>
                     {
                         bundle
                             .AddBaseBundles(StandardBundles.Scripts.Global)
-                            .AddContributors(typeof(BasicThemeGlobalScriptContributor));
+                            .AddContributors(typeof(VisitorThemeGlobalScriptContributor));
                     });
             });
         }

@@ -1,4 +1,4 @@
-﻿namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
+﻿namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.AccountTenancy
 {
     public class Model
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.UI.Navigation;
 
-namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar.UserMenu;
+namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.Toolbar.UserMenu;
 
 public class UserMenuViewComponent : AbpViewComponent
 {
