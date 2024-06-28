@@ -1,0 +1,35 @@
+﻿@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using Volo.Abp.MultiTenancy
+
+@model PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy.Model
+
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+
+@if (!Model.Hidden && CurrentTenant.IsAvailable)
+{
+    <form method="post">
+        <div class="d-flex flex-wrap mb-4 align-items-center">
+            <span style="font-size: .8em;" class="text-uppercase text-muted me-2">@MultiTenancyStringLocalizer["TenantAlt"] : </span>
+            <h6 class="my-0 d-inline-block me-2">
+                @if (CurrentTenant.Id == null)
+                {
+                    <span>
+                        @MultiTenancyStringLocalizer["NotSelected"]
+                    </span>
+                }
+                else
+                {
+                    <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                }
+            </h6>
+            @if (Model.ShowResetButton)
+            {
+                <abp-button type="submit" button-type="Link" name="Action" value="ResetTenant" class="btn-link text-danger">
+                    @MultiTenancyStringLocalizer["Reset"]
+                </abp-button>
+            }
+        </div>
+    </form>
+}

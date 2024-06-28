@@ -1,0 +1,30 @@
+﻿@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Brand
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Menu
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Toolbar
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.MainNavbar
+
+@model MainNavbarViewComponent.ViewModel
+@{
+    var bgCls = "navbar-dark bg-dark";
+    if (Model.IsLightBackground) {
+        bgCls = "bg-white";
+    }
+}
+<nav class="navbar navbar-expand-md flex-column flex-md-row @bgCls" id="main-navbar" style="min-height: 4rem;">
+    <div class="container">
+        @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#main-navbar-collapse" aria-controls="main-navbar-collapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                @(await Component.InvokeAsync<MainNavbarMenuViewComponent>())
+            </ul> 
+            <ul class="navbar-nav"> 
+                @(await Component.InvokeAsync<MainNavbarToolbarViewComponent>())
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,201 @@
+﻿@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.MultiTenancy
+@using Volo.Abp.AspNetCore.Mvc.AntiForgery
+@using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using PolpAbp.AspNetCore.Mvc.UI.Bundling
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.MainNavbar
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.PageAlerts
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Footer
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@using Volo.Abp.MultiTenancy
+@using Volo.Abp.Localization
+@using Volo.Abp.Ui.Branding
+@using Volo.Abp.Ui.LayoutHooks
+
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMultiTenancyOptions> MultiTenancyOptions
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+@inject ITenantResolveResultAccessor TenantResolveResultAccessor
+@inject IConfiguration Configuration
+
+@{
+    // todo: Load settings for Users from cookie (maybe)
+
+    Layout = null;
+    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+    var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
+
+    var homePage = Configuration["PolpAbp:WebUi:HomePage"] ?? "~";
+    homePage = Url.IsLocalUrl(homePage) ? Url.Content(homePage.EnsureStartsWith('~')) : homePage;
+
+    var logoUrl = @BrandingProvider.LogoUrl ?? "~";
+    logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
+
+    var bkgStyle = string.Empty;
+    var bkgClasses = string.Empty;
+    var bkgUrl = Configuration["PolpAbp:WebUi:Account:Light"];
+    if (!string.IsNullOrEmpty(bkgUrl))
+    {
+        bkgUrl = Url.IsLocalUrl(bkgUrl) ? Url.Content(bkgUrl.EnsureStartsWith('~')) : bkgUrl;
+        bkgStyle = $"background-image: url({bkgUrl})";
+        bkgClasses = "bgi-position-y-bottom bgi-position-x-center bgi-no-repeat bgi-size-contain";
+    }
+
+    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName :
+    (ViewBag.Title + " | " + BrandingProvider.AppName); //TODO: Discard to get from Title
+
+    var isResetButtonVisible = ViewBag.ShowResetButton ?? false;
+    var isTenancyViewHidden = ViewBag.HideTenancyView ?? false;
+    var isAppTitleVisible = ViewBag.ShowAppTitle ?? false;
+
+    var favicon = Configuration["PolpAbp:WebUi:Favicon"];
+    favicon = favicon ?? "~/favicon.ico";
+    favicon = Url.IsLocalUrl(favicon) ? Url.Content(favicon.EnsureStartsWith('~')) : favicon;
+
+    var vectorIcon = Configuration["PolpAbp:WebUi:VectorFavicon"];
+    if (!string.IsNullOrEmpty(vectorIcon))
+    {
+        vectorIcon = Url.IsLocalUrl(vectorIcon) ? Url.Content(vectorIcon.EnsureStartsWith('~')) : vectorIcon;
+    }
+
+    var appleTouchIcon = Configuration["PolpAbp:WebUi:AppleTouchIcon"];
+    if (!string.IsNullOrEmpty(appleTouchIcon))
+    {
+        appleTouchIcon = Url.IsLocalUrl(appleTouchIcon) ? Url.Content(appleTouchIcon.EnsureStartsWith('~')) : appleTouchIcon;
+    }
+
+    var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
+}
+
+<!DOCTYPE html>
+
+<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
+<head>
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="icon" href="@favicon">
+    @if (!string.IsNullOrEmpty(vectorIcon))
+    {
+        <link rel="icon" href="@vectorIcon" type="image/svg+xml">
+    }
+    @if (!string.IsNullOrEmpty(appleTouchIcon))
+    {
+        <link rel="apple-touch-icon" href="@appleTouchIcon">
+    }
+
+    <title>@pageTitle</title>
+
+    @if (!string.IsNullOrEmpty(applicationName))
+    {
+        <meta name="application-name" content="@applicationName" />
+    }
+    @if (ViewBag.MetaTitle != null)
+    {
+        <meta name="title" content="@ViewBag.MetaTitle" />
+    }
+    <!-- Keywords are becoming legacy -->
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name="keywords" content="@(ViewBag.Keywords as string)" />
+    }
+    @if (ViewBag.Description != null)
+    {
+        <meta name="description" content="@(ViewBag.Description as string)" />
+    }
+
+    <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
+
+    @await RenderSectionAsync("styles", false)
+
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
+
+    <script type="text/javascript">
+        const environments = {
+            passwordInputSelector: "#password-wrapper"
+        };
+    </script>
+
+</head>
+<body class="abp-account-layout bg-light @rtl">
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
+
+    <div class="@containerClass @bkgClasses" style="@bkgStyle">
+
+        <abp-row>
+            <abp-column class="col mx-auto w-lg-max-500 min-vh-100 p-10 p-lg-15">
+
+                @(await Component.InvokeAsync<MainNavbarViewComponent>(new { isLight = true }))
+
+                @if (isAppTitleVisible)
+                {
+                    <div class="text-center h1 mt-2 mb-3">
+                        @BrandingProvider.AppName
+                    </div>
+                }
+
+                <div class="card shadow-sm rounded mb-3 mt-3 py-3">
+                    <div class="card-body">
+
+                        @*                        <div class="d-flex mb-2 justify-content-between flex-wrap">
+                        <a href="@homePage">
+                        <img class="img-fluid h-40px" src="@logoUrl" alt="logo" />
+                        </a>
+
+                        </div>
+                        *@
+
+                        @(await Component.InvokeAsync<AccountTenancyViewComponent>(new { showResetBtn = isResetButtonVisible, hidden = isTenancyViewHidden }))
+
+                        @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                        @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
+                        @RenderBody()
+                        @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
+
+                    </div>
+                </div>
+
+                @(await Component.InvokeAsync<FooterViewComponent>())
+
+            </abp-column>
+        </abp-row>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+    <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
+
+    <script src="~/Abp/ApplicationConfigurationScript"></script>
+    <script src="~/Abp/ServiceProxyScript"></script>
+
+    @await RenderSectionAsync("scripts", false)
+
+    @await RenderSectionAsync("docReady", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Account)
+</body>
+</html>
