@@ -7,7 +7,7 @@ public class PolicyConsentViewComponent : ViewComponent
 {
     public virtual Task<IViewComponentResult> InvokeAsync()
     {
-        IViewComponentResult ret = View("~/Themes/Basic/Components/PolicyConsent/Default.cshtml");
+        IViewComponentResult ret = View("~/Themes/Visitor/Components/PolicyConsent/Default.cshtml");
         return Task.FromResult(ret);
     }
 }

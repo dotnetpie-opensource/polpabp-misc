@@ -7,7 +7,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Footer
     {
         public virtual IViewComponentResult Invoke()
         {
-            return View("~/Themes/Basic/Components/Footer/Default.cshtml");
+            return View("~/Themes/Visitor/Components/Footer/Default.cshtml");
         }
     }
 }

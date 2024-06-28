@@ -7,7 +7,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
     {
         public virtual IViewComponentResult Invoke(bool showResetBtn = false, bool hidden = false)
         {
-            return View("~/Themes/Basic/Components/AccountTenancy/Default.cshtml", new Model
+            return View("~/Themes/Visitor/Components/AccountTenancy/Default.cshtml", new Model
             {
                 Hidden= hidden,
                 ShowResetButton = showResetBtn

@@ -13,13 +13,13 @@ namespace PolpAbp.AspNetCore.Mvc.UI
             switch (name)
             {
                 case StandardLayouts.Application:
-                    return "~/Themes/Basic/Layouts/Application.cshtml";
+                    return "~/Themes/Visitor/Layouts/Application.cshtml";
                 case StandardLayouts.Account:
-                    return "~/Themes/Basic/Layouts/Account.cshtml";
+                    return "~/Themes/Visitor/Layouts/Account.cshtml";
                 case StandardLayouts.Empty:
-                    return "~/Themes/Basic/Layouts/Empty.cshtml";
+                    return "~/Themes/Visitor/Layouts/Empty.cshtml";
                 default:
-                    return fallbackToDefault ? "~/Themes/Basic/Layouts/Application.cshtml" : null;
+                    return fallbackToDefault ? "~/Themes/Visitor/Layouts/Application.cshtml" : null;
             }
         }
     }

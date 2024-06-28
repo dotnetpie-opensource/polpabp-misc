@@ -12,7 +12,7 @@ public class MainNavbarViewComponent : AbpViewComponent
             IsLightBackground = isLight
         };
 
-        return View("~/Themes/Basic/Components/MainNavbar/Default.cshtml", data);
+        return View("~/Themes/Visitor/Components/MainNavbar/Default.cshtml", data);
     }
 
     public class ViewModel
