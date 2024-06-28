@@ -6,10 +6,10 @@
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
 @using PolpAbp.AspNetCore.Mvc.UI.Bundling
-@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.MainNavbar
-@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.PageAlerts
-@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
-@using PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.Footer
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.MainNavbar
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.PageAlerts
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.AccountTenancy
+@using PolpAbp.AspNetCore.Mvc.UI.Themes.Visitor.Components.Footer
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
@@ -114,7 +114,7 @@
         <meta name="description" content="@(ViewBag.Description as string)" />
     }
 
-    <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
+    <abp-style-bundle name="@VisitorThemeBundles.Styles.Global" />
 
     @await RenderSectionAsync("styles", false)
 
@@ -185,7 +185,7 @@
         </symbol>
     </svg>
 
-    <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
+    <abp-script-bundle name="@VisitorThemeBundles.Scripts.Global" />
 
     <script src="~/Abp/ApplicationConfigurationScript"></script>
     <script src="~/Abp/ServiceProxyScript"></script>
