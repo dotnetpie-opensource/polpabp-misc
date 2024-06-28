@@ -6,7 +6,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            context.Files.Add("/themes/basic/layout.css");
+            context.Files.Add("/themes/visitor/layout.css");
         }
     }
 }
