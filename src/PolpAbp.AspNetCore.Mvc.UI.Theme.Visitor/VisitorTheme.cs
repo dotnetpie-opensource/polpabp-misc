@@ -6,7 +6,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI
     [ThemeName(Name)]
     public class VisitorTheme : ITheme, ITransientDependency
     {
-        public const string Name = "Basic";
+        public const string Name = "Visitor";
 
         public virtual string GetLayout(string name, bool fallbackToDefault = true)
         {
