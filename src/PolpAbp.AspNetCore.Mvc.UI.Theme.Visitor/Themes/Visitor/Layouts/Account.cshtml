@@ -24,6 +24,7 @@
 @inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
 @inject ITenantResolveResultAccessor TenantResolveResultAccessor
 @inject IConfiguration Configuration
+@inject IOptions<AbpThemingOptions> ThemingOptions
 
 @{
     // todo: Load settings for Users from cookie (maybe)
@@ -72,6 +73,7 @@
     }
 
     var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
+
 }
 
 <!DOCTYPE html>
