@@ -88,17 +88,20 @@
         <meta name="keywords" content="@ViewBag.Keywords" />
     }
 
+
     <!-- favicon -->
 
     <abp-style-bundle name="@BootslanderThemeBundles.Styles.Global" />
 
     @await RenderSectionAsync("styles", false)
 
-    <script type="text/javascript">const environments = {
-        };</script>
-
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
 
+    <script type="text/javascript">
+        const environments = {
+        };
+        const onPageLoadQueue = [];
+    </script>
 </head>
 <body class="abp-empty-layout @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
@@ -112,5 +115,14 @@
     @await RenderSectionAsync("docReady", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Empty)
+
+    <script type="text/javascript">
+        window.onload = function () {
+            for (var i = 0; i < onPageLoadQueue.length; i++) {
+                onPageLoadQueue[i]();
+            }
+        };
+    </script>
+
 </body>
 </html>

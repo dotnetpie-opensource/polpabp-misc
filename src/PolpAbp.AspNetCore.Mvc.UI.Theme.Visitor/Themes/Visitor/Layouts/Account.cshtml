@@ -128,6 +128,7 @@
         const environments = {
             passwordInputSelector: "#password-wrapper"
         };
+        const onPageLoadQueue = [];
     </script>
 
 </head>
@@ -199,5 +200,14 @@
     @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Account)
+
+    <script type="text/javascript">
+        window.onload = function () {
+            for (var i = 0; i < onPageLoadQueue.length; i++) {
+                onPageLoadQueue[i]();
+            }
+        };
+    </script>
+
 </body>
 </html>

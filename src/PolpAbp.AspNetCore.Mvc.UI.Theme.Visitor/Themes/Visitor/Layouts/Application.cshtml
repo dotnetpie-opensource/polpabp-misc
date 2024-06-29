@@ -104,6 +104,7 @@
     <script type="text/javascript">
         const environments = {
         };
+        const onPageLoadQueue = [];
     </script>
 
 </head>
@@ -136,5 +137,14 @@
     @await RenderSectionAsync("docReady", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Application)
+
+    <script type="text/javascript">
+        window.onload = function () {
+            for (var i = 0; i < onPageLoadQueue.length; i++) {
+                onPageLoadQueue[i]();
+            }
+        };
+    </script>
+
 </body>
 </html>

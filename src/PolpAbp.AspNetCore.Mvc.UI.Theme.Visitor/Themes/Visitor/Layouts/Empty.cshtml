@@ -99,6 +99,12 @@
     @await RenderSectionAsync("styles", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
+
+    <script type="text/javascript">
+        const environments = {
+        };
+        const onPageLoadQueue = [];
+    </script>
 </head>
 <body class="abp-empty-layout @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
@@ -122,5 +128,14 @@
     @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Empty)
+
+    <script type="text/javascript">
+        window.onload = function () {
+            for (var i = 0; i < onPageLoadQueue.length; i++) {
+                onPageLoadQueue[i]();
+            }
+        };
+    </script>
+
 </body>
 </html>
