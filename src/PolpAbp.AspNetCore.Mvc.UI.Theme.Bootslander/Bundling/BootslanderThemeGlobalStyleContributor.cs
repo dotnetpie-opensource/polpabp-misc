@@ -7,24 +7,32 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            context.Files.Add("/libs/aos/aos.css");
 
             if (CultureHelper.IsRtl)
             {
-                context.Files.Add("/libs/bootstrap/css/bootstrap.rtl.css");
+                // todo: Support RTL 
+                // context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
+                context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
             }
             else
             {
-                context.Files.Add("/libs/bootstrap/css/bootstrap.css");
+                context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
             }
 
+            context.Files.Add("/libs/animate-css/animate.css");
             context.Files.Add("/libs/bootstrap-icons/font/bootstrap-icons.css");
             context.Files.Add("/libs/boxicons/css/boxicons.css");
-            context.Files.Add("/libs/glightbox/css/glightbox.css");
             context.Files.Add("/libs/remixicon/fonts/remixicon.css");
-            context.Files.Add("/libs/swiper/swiper-bundle.css");
 
-            context.Files.Add("/themes/bootslander/layout.css");
+            context.Files.Add("/libs/magnific-popup-js/magnific-popup.css");
+            context.Files.Add("/libs/owl-carousel/assets/owl.carousel.css");
+            context.Files.Add("/libs/lightslider/css/lightslider.css");
+            // Slider
+            context.Files.Add("/libs/swiper/swiper-bundle.css");
+            // Theme-specific 
+            context.Files.Add("/themes/bootslander/spacing.css");
+
+            context.Files.Add("/custom/bootslander/css/theme.css");
         }
     }
 }
