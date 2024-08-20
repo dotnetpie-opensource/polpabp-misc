@@ -10,8 +10,10 @@
 
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
+
+    var isNavBarDark = (ViewBag?.IsNavbarDark as bool?) ?? false;
 }
 
-<a href="@appUrl">
+<a class="navbar-brand logo h2 mb-0 @(isNavBarDark ? "text-white" : "")" href="@appUrl">
     <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
 </a>
