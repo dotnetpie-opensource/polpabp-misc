@@ -29,6 +29,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
             context.Files.Add("/libs/magnific-popup-js/magnific-popup.css");
             context.Files.Add("/libs/owl-carousel/assets/owl.carousel.css");
             context.Files.Add("/libs/lightslider/css/lightslider.css");
+            context.Files.Add("/libs/glightbox/css/glightbox.css");
             // Slider
             context.Files.Add("/libs/swiper/swiper-bundle.css");
             // Theme-specific 
