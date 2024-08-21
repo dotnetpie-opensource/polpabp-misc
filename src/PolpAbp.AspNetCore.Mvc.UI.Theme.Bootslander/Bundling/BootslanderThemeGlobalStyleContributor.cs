@@ -21,8 +21,8 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
 
             context.Files.Add("/libs/animate-css/animate.css");
             context.Files.Add("/libs/bootstrap-icons/font/bootstrap-icons.css");
-            context.Files.Add("/libs/boxicons/css/boxicons.css");
-            context.Files.Add("/libs/remixicon/fonts/remixicon.css");
+            //context.Files.Add("/libs/boxicons/css/boxicons.css");
+            //context.Files.Add("/libs/remixicon/fonts/remixicon.css");
 
             context.Files.Add("/libs/line-awesome/line-awesome/css/line-awesome.css");
 
