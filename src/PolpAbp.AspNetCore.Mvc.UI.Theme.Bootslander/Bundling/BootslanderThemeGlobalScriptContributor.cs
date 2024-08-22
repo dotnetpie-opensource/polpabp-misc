@@ -18,8 +18,13 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
             context.Files.Add("/libs/lightslider/js/lightslider.js");
             context.Files.Add("/libs/glightbox/js/glightbox.js");
             context.Files.Add("/libs/swiper/swiper-bundle.js");
+            context.Files.Add("/libs/particles-js/particles.js");
 
             // Theme-specific 
+            context.Files.Add("/themes/bootslander/theme-ht-typer.js");
+            context.Files.Add("/themes/bootslander/theme-ht-jquery-appear.js");
+            context.Files.Add("/themes/bootslander/theme-ht-ease-min.js");
+            context.Files.Add("/themes/bootslander/theme-ht-modernizr.js");
             context.Files.Add("/themes/bootslander/theme-ht-counter.js");
             context.Files.Add("/themes/bootslander/theme-ht-parallax.js");
 

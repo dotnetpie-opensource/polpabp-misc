@@ -523,10 +523,24 @@ $.fn.exists = function () {
         })
     }
 
+    function initTyper() {
+        $(".typer").each(function () {
+            var $this = $(this);
+            $this.typed({
+                strings: $this.attr('data-words').split(','),
+                typeSpeed: 150,
+                // typing speed
+                backDelay: 500 // pause before backspacing
+            });
+        });
+    }
+
+
     /*------------------------------------
       HT Window load and functions
     --------------------------------------*/
     $(document).ready(function () {
+        initTyper();
         fullScreen();
         owlcarousel();
         counter();
@@ -543,7 +557,7 @@ $.fn.exists = function () {
         lightSlider();
         glightbox();
         testimonialSlides();
-        // particles();
+        particles();
     });
 
     $window.resize(function () {
@@ -559,9 +573,9 @@ $.fn.exists = function () {
         });
     } else {
         $(window).on('load', function () {
-            preloader(),
-                isotope(),
-                wowanimation();
+            preloader();
+            isotope();
+            wowanimation();
         });
     }
 })();
