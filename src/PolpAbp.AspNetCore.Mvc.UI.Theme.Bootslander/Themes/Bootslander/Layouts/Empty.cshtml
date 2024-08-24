@@ -136,7 +136,24 @@
 <body class="abp-empty-layout @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
 
-    @RenderBody()
+    <!-- page wrapper start -->
+    <div class="page-wrapper">
+
+        <!-- preloader start -->
+        <div id="ht-preloader">
+            <div class="loader clear-loader animate__animated animate__fadeIn animate__fadeOut animate__delay-2s">
+                <span></span>
+                <p>@applicationName</p>
+            </div>
+        </div>
+
+        @RenderBody()
+
+    </div>
+    <!-- page wrapper end -->
+    <!--back-to-top start-->
+    <div class="scroll-top"><a class="smoothscroll" href="#top"><i class="las la-angle-up"></i></a></div>
+    <!--back-to-top end-->
 
     <abp-script-bundle name="@BootslanderThemeBundles.Scripts.Global" />
 
