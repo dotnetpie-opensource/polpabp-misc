@@ -56,8 +56,22 @@
     var isAppTitleVisible = ViewBag.ShowAppTitle ?? false;
 
     var favicon = Configuration["PolpAbp:WebUi:Favicon"];
-    favicon = favicon ?? "~/favicon.ico";
-    favicon = Url.IsLocalUrl(favicon) ? Url.Content(favicon.EnsureStartsWith('~')) : favicon;
+    if (!string.IsNullOrEmpty(favicon))
+    {
+        favicon = Url.IsLocalUrl(favicon) ? Url.Content(favicon.EnsureStartsWith('~')) : favicon;
+    }
+
+    var faviconPng16 = Configuration["PolpAbp:WebUi:FaviconPng16"];
+    if (!string.IsNullOrEmpty(faviconPng16))
+    {
+        faviconPng16 = Url.IsLocalUrl(faviconPng16) ? Url.Content(faviconPng16.EnsureStartsWith('~')) : faviconPng16;
+    }
+
+    var faviconPng32 = Configuration["PolpAbp:WebUi:FaviconPng32"];
+    if (!string.IsNullOrEmpty(faviconPng32))
+    {
+        faviconPng32 = Url.IsLocalUrl(faviconPng32) ? Url.Content(faviconPng32.EnsureStartsWith('~')) : faviconPng32;
+    }
 
     var vectorIcon = Configuration["PolpAbp:WebUi:VectorFavicon"];
     if (!string.IsNullOrEmpty(vectorIcon))
@@ -71,6 +85,8 @@
         appleTouchIcon = Url.IsLocalUrl(appleTouchIcon) ? Url.Content(appleTouchIcon.EnsureStartsWith('~')) : appleTouchIcon;
     }
 
+    var statusBarColor = Configuration["PolpAbp:WebUi:StatusBarColor"] ?? "black";
+
     var applicationName = Configuration["PolpAbp:WebUi:ApplicationName"];
 }
 
@@ -81,25 +97,37 @@
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
     <meta charset="utf-8">
+    <title>@pageTitle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="icon" href="@favicon">
+    <!-- favicon -->
+    @if (!string.IsNullOrEmpty(favicon))
+    {
+        <link rel="icon" type="image/x-icon" href="@favicon">
+    }
+    @if (!string.IsNullOrEmpty(faviconPng16))
+    {
+        <link rel="icon" type="image/png" sizes="16x16" href="@faviconPng16">
+    }
+    @if (!string.IsNullOrEmpty(faviconPng32))
+    {
+        <link rel="icon" type="image/png" sizes="32x32" href="@faviconPng32">
+    }
     @if (!string.IsNullOrEmpty(vectorIcon))
     {
         <link rel="icon" href="@vectorIcon" type="image/svg+xml">
     }
     @if (!string.IsNullOrEmpty(appleTouchIcon))
     {
-        <link rel="apple-touch-icon" href="@appleTouchIcon">
+        <link rel="apple-touch-icon" sizes="180x180" href="@appleTouchIcon">
     }
-
-    <title>@pageTitle</title>
 
     @if (!string.IsNullOrEmpty(applicationName))
     {
         <meta name="application-name" content="@applicationName" />
     }
+
     @if (ViewBag.MetaTitle != null)
     {
         <meta name="title" content="@ViewBag.MetaTitle" />

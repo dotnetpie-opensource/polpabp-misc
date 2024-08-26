@@ -108,6 +108,11 @@
 
     <meta name="msapplication-TileColor" content="@statusBarColor">
 
+    @if (!string.IsNullOrEmpty(applicationName))
+    {
+        <meta name="application-name" content="@applicationName" />
+    }
+
     @if (ViewBag.MetaTitle != null)
     {
         <meta name="title" content="@ViewBag.MetaTitle" />
@@ -125,10 +130,13 @@
 
     @await RenderSectionAsync("styles", false)
 
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
 
     <script type="text/javascript">
         const environments = {
+            passwordInputSelector: "#password-wrapper"
         };
         const onPageLoadQueue = [];
     </script>
@@ -162,6 +170,8 @@
     @await RenderSectionAsync("scripts", false)
 
     @await RenderSectionAsync("docReady", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Empty)
 
