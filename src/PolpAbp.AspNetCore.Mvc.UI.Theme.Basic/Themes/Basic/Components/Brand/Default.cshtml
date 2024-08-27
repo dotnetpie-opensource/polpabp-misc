@@ -5,7 +5,7 @@
 @inject IConfiguration Configuration
 
 @{
-    var homePageUrl = Configuration["WebUi:HomePage"] ?? Configuration["App:SelfUrl"] ?? "~";
+    var homePageUrl = Configuration["PolpAbp:WebUi:HomePage"] ?? Configuration["App:SelfUrl"] ?? "~";
     homePageUrl = Url.IsLocalUrl(homePageUrl) ? Url.Content(homePageUrl.EnsureStartsWith('~')) : homePageUrl;
 
 
