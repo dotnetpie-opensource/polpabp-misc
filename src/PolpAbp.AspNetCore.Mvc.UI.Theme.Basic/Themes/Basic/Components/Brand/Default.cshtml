@@ -8,10 +8,25 @@
     var homePageUrl = Configuration["WebUi:HomePage"] ?? Configuration["App:SelfUrl"] ?? "~";
     homePageUrl = Url.IsLocalUrl(homePageUrl) ? Url.Content(homePageUrl.EnsureStartsWith('~')) : homePageUrl;
 
+
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
+
+    var logoReversedUrl = @BrandingProvider.LogoReverseUrl ?? "~";
+    logoReversedUrl = Url.IsLocalUrl(logoReversedUrl) ? Url.Content(logoReversedUrl.EnsureStartsWith('~')) : logoReversedUrl;
+
+    var isNavbarLight = (ViewBag?.IsNavbarLight as bool?) ?? false;
 }
 
-<a class="navbar-brand" href="@homePageUrl">
-    <img src="@logoUrl" height="60" class="d-inline-block align-text-top" alt="@BrandingProvider.AppName" />
-</a>
+@if (isNavbarLight)
+{
+    <a class="navbar-brand" href="@homePageUrl">
+        <img src="@logoUrl" height="60" class="d-inline-block align-text-top" alt="@BrandingProvider.AppName" />
+    </a>
+}
+else
+{
+    <a class="navbar-brand" href="@homePageUrl">
+        <img src="@logoReversedUrl" height="60" class="d-inline-block align-text-top" alt="@BrandingProvider.AppName" />
+    </a>
+}

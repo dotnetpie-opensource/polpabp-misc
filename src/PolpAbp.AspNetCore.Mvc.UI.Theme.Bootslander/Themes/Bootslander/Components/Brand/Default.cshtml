@@ -11,9 +11,21 @@
     var logoUrl = @BrandingProvider.LogoUrl ?? "~";
     logoUrl = Url.IsLocalUrl(logoUrl) ? Url.Content(logoUrl.EnsureStartsWith('~')) : logoUrl;
 
-    var isNavBarDark = (ViewBag?.IsNavbarDark as bool?) ?? false;
+    var logoReversedUrl = @BrandingProvider.LogoReverseUrl ?? "~";
+    logoReversedUrl = Url.IsLocalUrl(logoReversedUrl) ? Url.Content(logoReversedUrl.EnsureStartsWith('~')) : logoReversedUrl;
+
+    var isNavbarLight = (ViewBag?.IsNavbarLight as bool?) ?? false;
 }
 
-<a class="navbar-brand logo h2 mb-0 @(isNavBarDark ? "text-white" : "")" href="@appUrl">
-    <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
-</a>
+@if (isNavbarLight)
+{
+    <a class="navbar-brand logo h2 mb-0" href="@appUrl">
+        <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
+    </a>
+}
+else
+{
+    <a class="navbar-brand logo h2 mb-0" href="@appUrl">
+        <img src="@logoReversedUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
+    </a>
+}
