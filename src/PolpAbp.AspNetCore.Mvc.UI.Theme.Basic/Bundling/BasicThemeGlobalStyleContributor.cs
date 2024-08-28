@@ -16,13 +16,14 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
             if (CultureHelper.IsRtl)
             {
                 context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
+                context.Files.Add("/themes/basic/layout.rtl.css");
             }
             else
             {
                 context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
+                context.Files.Add("/themes/basic/layout.css");
             }
 
-            context.Files.Add("/themes/basic/layout.css");
         }
     }
 }
