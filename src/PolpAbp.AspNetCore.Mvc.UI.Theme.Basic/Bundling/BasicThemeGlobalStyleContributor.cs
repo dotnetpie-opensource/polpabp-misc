@@ -1,4 +1,5 @@
-﻿using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+﻿using System.Linq;
+using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.Localization;
 
 namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
@@ -7,11 +8,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            var stdOnes = context.Files.Find(x => x.FileName.Contains("bootstrap.css"));
-            if (stdOnes != null)
-            {
-                context.Files.Remove(stdOnes);
-            }
+            context.Files.RemoveAll(x => x.FileName.Contains("bootstrap.css") || x.FileName.Contains("bootstrap.rtl.css"));
 
             if (CultureHelper.IsRtl)
             {

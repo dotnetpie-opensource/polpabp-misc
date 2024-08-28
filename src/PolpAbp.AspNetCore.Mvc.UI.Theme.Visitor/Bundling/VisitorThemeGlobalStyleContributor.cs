@@ -7,24 +7,18 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            var stdOnes = context.Files.Find(x => x.FileName.Contains("bootstrap.css"));
-            if (stdOnes != null)
-            {
-                context.Files.Remove(stdOnes);
-            }
+            context.Files.RemoveAll(x => x.FileName.Contains("bootstrap.css") || x.FileName.Contains("bootstrap.rtl.css"));
 
             if (CultureHelper.IsRtl)
             {
-                // todo: Support RTL 
-                // context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
-                context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
+                context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
+                context.Files.Add("/themes/visitor/layout.rtl.css");
             }
             else
             {
                 context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
+                context.Files.Add("/themes/visitor/layout.css");
             }
-
-            context.Files.Add("/themes/visitor/layout.css");
         }
     }
 }
