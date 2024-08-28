@@ -14,7 +14,7 @@
     var logoReversedUrl = @BrandingProvider.LogoReverseUrl ?? "~";
     logoReversedUrl = Url.IsLocalUrl(logoReversedUrl) ? Url.Content(logoReversedUrl.EnsureStartsWith('~')) : logoReversedUrl;
 
-    var isNavbarLight = (ViewBag?.IsNavbarLight as bool?) ?? false;
+    var isNavbarLight = (ViewBag?.IsNavbarLight as bool?) ?? true;
 }
 
 @if (isNavbarLight)
