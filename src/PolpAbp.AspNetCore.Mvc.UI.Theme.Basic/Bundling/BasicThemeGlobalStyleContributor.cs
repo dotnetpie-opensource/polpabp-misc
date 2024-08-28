@@ -15,9 +15,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
 
             if (CultureHelper.IsRtl)
             {
-                // todo: Support RTL 
-                // context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
-                context.Files.Add("/custom/bootstrap5/css/bootstrap.css");
+                context.Files.Add("/custom/bootstrap5/css/bootstrap.rtl.css");
             }
             else
             {
