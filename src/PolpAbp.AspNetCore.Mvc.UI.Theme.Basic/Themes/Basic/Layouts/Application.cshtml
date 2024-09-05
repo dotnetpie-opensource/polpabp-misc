@@ -102,6 +102,12 @@
         <link rel="apple-touch-icon" sizes="180x180" href="@appleTouchIcon">
     }
 
+    <!-- add to homescreen for ios -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <meta name="msapplication-TileColor" content="@statusBarColor">
+
     @if (!string.IsNullOrEmpty(applicationName))
     {
         <meta name="application-name" content="@applicationName" />
