@@ -9,7 +9,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Themes.Basic.Components.AccountTenancy
         {
             return View("~/Themes/Basic/Components/AccountTenancy/Default.cshtml", new Model
             {
-                Hidden= hidden,
+                Hidden = hidden,
                 ShowResetButton = showResetBtn
             });
         }

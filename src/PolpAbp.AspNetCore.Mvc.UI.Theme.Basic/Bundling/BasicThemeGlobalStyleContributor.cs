@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+﻿using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.Localization;
 
 namespace PolpAbp.AspNetCore.Mvc.UI.Bundling
