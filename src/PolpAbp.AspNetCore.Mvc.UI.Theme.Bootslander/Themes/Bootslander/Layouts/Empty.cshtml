@@ -16,9 +16,9 @@
 @inject IConfiguration Configuration
 @{
     Layout = null;
-    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+    var containerClass = ViewData["FluidLayout"] as bool? == true ? "container-fluid" : "container";
 
-    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+    var pageTitle = ViewData["Title"] as string ?? BrandingProvider.AppName;
 
     if (PageLayout.Content.Title != null)
     {
@@ -113,17 +113,17 @@
         <meta name="application-name" content="@applicationName" />
     }
 
-    @if (ViewBag.MetaTitle != null)
+    @if (ViewData["MetaTitle"] != null)
     {
-        <meta name="title" content="@ViewBag.MetaTitle" />
+        <meta name="title" content="@ViewData["MetaTitle"]" />
     }
-    @if (ViewBag.Description != null)
+    @if (ViewData["Description"] != null)
     {
-        <meta name="description" content="@ViewBag.Description" />
+        <meta name="description" content="@ViewData["Description"]" />
     }
-    @if (ViewBag.Keywords != null)
+    @if (ViewData["Keywords"] != null)
     {
-        <meta name="keywords" content="@ViewBag.Keywords" />
+        <meta name="keywords" content="@ViewData["Keywords"]" />
     }
 
     <abp-style-bundle name="@BootslanderThemeBundles.Styles.Global" />

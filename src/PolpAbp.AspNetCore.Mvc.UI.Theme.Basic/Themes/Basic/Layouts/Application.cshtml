@@ -18,9 +18,9 @@
 
 @{
     Layout = null;
-    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+    var containerClass = ViewData["FluidLayout"] as bool? == true ? "container-fluid" : "container";
 
-    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+    var pageTitle = ViewData["Title"] as string ?? BrandingProvider.AppName;
 
     if (PageLayout.Content.Title != null)
     {

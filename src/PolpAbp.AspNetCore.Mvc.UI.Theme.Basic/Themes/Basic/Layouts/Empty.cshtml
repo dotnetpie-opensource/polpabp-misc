@@ -17,9 +17,9 @@
 
 @{
     Layout = null;
-    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+    var containerClass = ViewData["FluidLayout"] as bool? == true ? "container-fluid" : "container";
 
-    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+    var pageTitle = ViewData["Title"] as string ?? BrandingProvider.AppName;
 
     if (PageLayout.Content.Title != null)
     {
@@ -112,18 +112,18 @@
         <meta name="application-name" content="@applicationName" />
     }
 
-    @if (ViewBag.MetaTitle != null)
+    @if (ViewData["MetaTitle"] != null)
     {
-        <meta name="title" content="@ViewBag.MetaTitle" />
+        <meta name="title" content="@ViewData["MetaTitle"]" />
     }
     <!-- Keywords are becoming legacy -->
-    @if (ViewBag.Keywords != null)
+    @if (ViewData["Keywords"] != null)
     {
-        <meta name="keywords" content="@(ViewBag.Keywords as string)" />
+        <meta name="keywords" content="@(ViewData["Keywords"] as string)" />
     }
-    @if (ViewBag.Description != null)
+    @if (ViewData["Description"] != null)
     {
-        <meta name="description" content="@(ViewBag.Description as string)" />
+        <meta name="description" content="@(ViewData["Description"] as string)" />
     }
 
     <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
