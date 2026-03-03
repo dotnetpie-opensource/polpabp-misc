@@ -40,6 +40,9 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
             {
                 context.Files.Add("/custom/bootslander/css/theme.css");
             }
+
+            // FormLang Workflow Platform Enhancements (Phase 1)
+            context.Files.Add("/custom/bootslander/css/workflow-enhancements.css");
         }
     }
 }
