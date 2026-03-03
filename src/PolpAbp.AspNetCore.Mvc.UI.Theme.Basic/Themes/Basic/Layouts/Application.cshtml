@@ -113,18 +113,18 @@
         <meta name="application-name" content="@applicationName" />
     }
 
-    @if (ViewBag.MetaTitle != null)
+    @if (ViewData["MetaTitle"] != null)
     {
-        <meta name="title" content="@ViewBag.MetaTitle" />
+        <meta name="title" content="@(ViewData["MetaTitle"] as string)" />
     }
     <!-- Keywords are becoming legacy -->
-    @if (ViewBag.Keywords != null)
+    @if (ViewData["Keywords"] != null)
     {
-        <meta name="keywords" content="@(ViewBag.Keywords as string)" />
+        <meta name="keywords" content="@(ViewData["Keywords"] as string)" />
     }
-    @if (ViewBag.Description != null)
+    @if (ViewData["Description"] != null)
     {
-        <meta name="description" content="@(ViewBag.Description as string)" />
+        <meta name="description" content="@(ViewData["Description"] as string)" />
     }
 
     <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
