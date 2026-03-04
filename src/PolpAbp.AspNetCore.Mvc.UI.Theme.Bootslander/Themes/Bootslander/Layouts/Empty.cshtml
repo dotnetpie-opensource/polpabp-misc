@@ -132,6 +132,9 @@
 
     @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
+    @* SEO Metadata: OpenGraph, Twitter Cards, Schema.org *@
+    @await Html.PartialAsync("_SeoMetadata")
+
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
 
     <script type="text/javascript">
