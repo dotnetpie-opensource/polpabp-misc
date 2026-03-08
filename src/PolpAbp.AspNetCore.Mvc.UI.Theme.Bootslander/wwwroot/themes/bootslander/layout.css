@@ -1,42 +1,178 @@
+@charset "UTF-8";
 /*--------------------------------------------------------------
-# General
+# Typography - Base Text Styles
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Typography - Base Text Styles
+--------------------------------------------------------------*/
+/**
+ * Purpose: Base typography for all text elements
+ * Scope: Body text, headings, links, paragraphs
+ * 
+ * These styles provide the foundation for all text rendering.
+ * Component-specific text styles should override these in their partials.
+ */
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #01036f;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+}
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+@media (max-width: 768px) {
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+  h4 {
+    font-size: 1.125rem;
+  }
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
 }
 
 a {
   color: #1acc8d;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: #34e5a6;
+  color: #149f6e;
+  text-decoration: none;
+}
+a:focus {
+  outline: 2px solid #004a77;
+  outline-offset: 2px;
   text-decoration: none;
 }
 
-h1 {
-  font-family: "Montserrat", sans-serif;
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-h2 {
-  font-family: "Montserrat", sans-serif;
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+ul li, ol li {
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
 }
 
-h3 {
-  font-family: "Montserrat", sans-serif;
+strong, b {
+  font-weight: 700;
 }
 
-h4 {
-  font-family: "Montserrat", sans-serif;
+em, i {
+  font-style: italic;
 }
 
-h5 {
-  font-family: "Montserrat", sans-serif;
+small {
+  font-size: 0.875rem;
 }
 
-h6 {
-  font-family: "Montserrat", sans-serif;
+mark {
+  background-color: #bcf6e2;
+  padding: 0.125rem 0.25rem;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background: rgba(0, 74, 119, 0.05);
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  color: #004a77;
+}
+
+pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 3px solid #004a77;
+  overflow-x: auto;
+}
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 4px solid #1acc8d;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #444444;
+}
+blockquote p {
+  margin-bottom: 0.5rem;
+}
+blockquote footer {
+  font-size: 0.875rem;
+  color: #777777;
+  font-style: normal;
+}
+blockquote footer:before {
+  content: 'β€"Β ';
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+::selection {
+  background: #1acc8d;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #1acc8d;
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
