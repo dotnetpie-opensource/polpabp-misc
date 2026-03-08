@@ -31,6 +31,7 @@ namespace PolpAbp.AspNetCore.Mvc.UI.Theme.Bootslander.Bundling
             context.Files.Add("/libs/swiper/swiper-bundle.css");
             // Theme-specific 
             context.Files.Add("/themes/bootslander/spacing.css");
+            context.Files.Add("/themes/bootslander/layout.css");
 
             if (CultureHelper.IsRtl)
             {

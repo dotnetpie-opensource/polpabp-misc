@@ -120,19 +120,6 @@ h6 {
   align-items: center;
   justify-content: center;
 }
-#preloader:before,
-#ht-preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #1acc8d;
-  border-top-color: #d2f9eb;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1s linear infinite;
-}
 #preloader .loader,
 #ht-preloader .loader {
   display: flex;
@@ -159,6 +146,20 @@ h6 {
   background: transparent;
 }
 
+#preloader:not(:has(.loader)):before,
+#ht-preloader:not(:has(.loader)):before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #004a77;
+  border-top-color: #aadfff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1s linear infinite;
+}
+
 @keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
@@ -170,30 +171,54 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+/*--------------------------------------------------------------
+# Back to Top Button
+--------------------------------------------------------------*/
+.back-to-top,
+.scroll-top {
   position: fixed;
   visibility: hidden;
   opacity: 0;
   right: 15px;
   bottom: 100px;
   z-index: 996;
-  background: #1acc8d;
+  background: #004a77;
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  transition: all 0.4s;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.back-to-top i {
+.back-to-top a,
+.scroll-top a {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.back-to-top i,
+.scroll-top i {
   font-size: 28px;
   color: #ffffff;
   line-height: 0;
 }
-.back-to-top:hover {
-  background: #2be4a2;
-  color: #ffffff;
+.back-to-top:hover,
+.scroll-top:hover {
+  background: #00314e;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 74, 119, 0.3);
 }
 
-.back-to-top.active {
+.back-to-top.active,
+.back-to-top.scroll-visible,
+.scroll-top.active,
+.scroll-top.scroll-visible {
   visibility: visible;
   opacity: 1;
 }
