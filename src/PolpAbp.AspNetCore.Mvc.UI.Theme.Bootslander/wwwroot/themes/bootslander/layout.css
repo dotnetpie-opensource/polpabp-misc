@@ -1,5 +1,25 @@
 @charset "UTF-8";
 /*--------------------------------------------------------------
+# SCSS Variables - FormLang Theme
+--------------------------------------------------------------*/
+/**
+ * Purpose: Central variable definitions for the Bootslander theme
+ * Last Updated: 2026-03-07 (Phase 2: Variable Extraction)
+ * 
+ * This file defines all colors, typography, spacing, and component variables
+ * used throughout the theme. Prefer using these variables over hardcoded values.
+ */
+/*--------------------------------------------------------------
+# SCSS Variables - FormLang Theme
+--------------------------------------------------------------*/
+/**
+ * Purpose: Central variable definitions for the Bootslander theme
+ * Last Updated: 2026-03-07 (Phase 2: Variable Extraction)
+ * 
+ * This file defines all colors, typography, spacing, and component variables
+ * used throughout the theme. Prefer using these variables over hardcoded values.
+ */
+/*--------------------------------------------------------------
 # Typography - Base Text Styles
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -515,10 +535,10 @@ hr {
   top: calc(100% + 30px);
   margin: 0;
   padding: 10px 0;
-  z-index: 99;
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-radius: 4px;
@@ -1069,7 +1089,7 @@ section {
 }
 .testimonials .testimonial-item h3 {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   margin: 10px 0 5px 0;
   color: #ffffff;
 }
