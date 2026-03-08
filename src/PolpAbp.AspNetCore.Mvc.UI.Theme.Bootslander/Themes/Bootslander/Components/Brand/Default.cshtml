@@ -14,18 +14,16 @@
     var logoReversedUrl = @BrandingProvider.LogoReverseUrl ?? "~";
     logoReversedUrl = Url.IsLocalUrl(logoReversedUrl) ? Url.Content(logoReversedUrl.EnsureStartsWith('~')) : logoReversedUrl;
 
-    var isNavbarLight = (ViewBag?.IsNavbarLight as bool?) ?? true;
+    // Read header theme: "dark", "light", "transparent-dark", "transparent-light"
+    var headerTheme = (ViewData["HeaderTheme"] as string) ?? "dark";
+
+    // Determine if header is dark (needs light/reversed logo)
+    var isDarkHeader = headerTheme.Contains("dark", StringComparison.OrdinalIgnoreCase);
+
+    // Use reversed (light) logo for dark headers, regular (dark) logo for light headers
+    var logoToUse = isDarkHeader ? logoReversedUrl : logoUrl;
 }
 
-@if (isNavbarLight)
-{
-    <a class="navbar-brand logo h2 mb-0" href="@appUrl">
-        <img src="@logoUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
-    </a>
-}
-else
-{
-    <a class="navbar-brand logo h2 mb-0" href="@appUrl">
-        <img src="@logoReversedUrl" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
-    </a>
-}
+<a class="navbar-brand logo h2 mb-0" href="@appUrl">
+    <img src="@logoToUse" height="60" class="img-fluid" alt="@BrandingProvider.AppName" />
+</a>
