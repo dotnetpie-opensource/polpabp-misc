@@ -86,8 +86,8 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --header-height: 80px;
-  --header-height-scrolled: 60px;
+  --header-height: 65px;
+  --header-height-scrolled: 55px;
   --hero-padding-top: 120px;
   --border-radius-sm: 3px;
   --border-radius-md: 4px;
@@ -509,7 +509,9 @@ hr {
 --------------------------------------------------------------*/
 .header,
 .site-header {
-  height: 85px;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
   transition: all 0.3s ease;
   z-index: 997;
   background: rgba(0, 74, 119, 0.9);
@@ -550,8 +552,12 @@ hr {
 .header.header-scrolled,
 .site-header.header-scrolled {
   background: rgba(0, 74, 119, 0.95);
-  height: 60px;
+  min-height: 55px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.header.header-scrolled .header-wrap,
+.site-header.header-scrolled .header-wrap {
+  padding: 0.5rem 0;
 }
 .header.header-scrolled .logo img,
 .site-header.header-scrolled .logo img {
@@ -560,7 +566,8 @@ hr {
 
 .header-wrap {
   position: relative;
-  padding: 12px 0;
+  padding: 0.75rem 0;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -568,7 +575,7 @@ hr {
 # Navigation Menu
 --------------------------------------------------------------*/
 .navbar {
-  padding: 0;
+  padding: 0.5rem 0;
 }
 .navbar ul {
   margin: 0;
@@ -945,7 +952,7 @@ hr {
 @media (max-width: 992px) {
   #hero,
   .hero {
-    padding-top: 80px;
+    padding-top: 65px;
   }
   #hero .animated,
   .hero .animated {
@@ -1035,7 +1042,7 @@ section {
   padding: 20px 0;
   background-color: #fafaff;
   min-height: 40px;
-  margin-top: 80px;
+  margin-top: 65px;
 }
 .breadcrumbs h2 {
   font-size: 24px;
